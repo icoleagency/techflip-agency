@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechFlip Agency — Own Your Tech Reselling Business</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --card: #111111;
+  --border: #1f1f1f;
+  --gold: #00d4ff;
+  --gold2: #61efce;
+  --cyan: #00d4ff;
+  --green: #61efce;
+  --pink: #f9004d;
+  --text: #ffffff;
+  --muted: #999999;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 2px; }
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 64px;
+  background: rgba(5,5,13,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: var(--font-display); font-size: 26px; letter-spacing: 3px; }
+.nav-logo em { color: var(--cyan); font-style: normal; }
+.nav-links { display: flex; gap: 32px; font-size: 13px; font-weight: 500; letter-spacing: 1px; }
+.nav-links a { color: var(--muted); text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--cyan); }
+.nav-cta {
+  background: var(--pink); color: #fff; border: none;
+  border-radius: 4px; padding: 10px 22px;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 1.5px; cursor: pointer; font-weight: 700;
+  text-decoration: none; transition: opacity .2s;
+}
+.nav-cta:hover { opacity: .85; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: 100px 24px 60px;
+  position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 2;
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(0,212,255,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 30%, rgba(249,0,77,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 90%, rgba(97,239,206,0.05) 0%, transparent 45%);
+}
+.hero-grid {
+  position: absolute; inset: 0; z-index: 2;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-scanlines {
+  position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.1) 3px, rgba(0,0,0,0.1) 4px);
+}
+.hero-eyebrow {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 4px; color: var(--cyan);
+  margin-bottom: 24px; position: relative; z-index: 2;
+  display: flex; align-items: center; gap: 10px; justify-content: center;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; width: 40px; height: 1px; background: var(--cyan); opacity: 0.5;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 9vw, 120px);
+  line-height: 0.9;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  position: relative; z-index: 2;
+}
+.hero h1 .gold {
+  background: linear-gradient(135deg, #00d4ff 0%, #61efce 50%, #f9004d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero h1 .dim { color: #1a1a1a; }
+.hero-sub {
+  font-size: clamp(16px, 2.5vw, 22px);
+  color: var(--muted); font-weight: 300;
+  max-width: 600px; line-height: 1.7;
+  margin-bottom: 48px; position: relative; z-index: 2;
+}
+.hero-sub strong { color: var(--text); font-weight: 600; }
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 2; }
+.btn-gold {
+  background: var(--pink); color: #fff;
+  border: none; border-radius: 4px;
+  padding: 16px 36px;
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 2px; cursor: pointer; font-weight: 700;
+  text-decoration: none; display: inline-block;
+  transition: all .2s;
+}
+.btn-gold:hover { background: #c8003e; transform: translateY(-2px); }
+.btn-ghost {
+  background: transparent; color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px; padding: 16px 36px;
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 2px; cursor: pointer;
+  text-decoration: none; display: inline-block;
+  transition: all .2s;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Hero stats */
+.hero-stats {
+  display: flex; gap: 0; margin-top: 64px;
+  border: 1px solid var(--border); border-radius: 12px;
+  overflow: hidden; position: relative; z-index: 2;
+  background: var(--surface);
+}
+.hero-stat {
+  padding: 20px 36px; text-align: center;
+  border-right: 1px solid var(--border);
+  flex: 1;
+}
+.hero-stat:last-child { border-right: none; }
+.hs-val {
+  font-family: var(--font-display); font-size: 38px;
+  letter-spacing: 1px; color: var(--cyan);
+  display: block;
+}
+.hs-lbl {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; color: var(--muted);
+  margin-top: 2px; display: block;
+}
+
+/* ── SECTION BASE ── */
+.section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
+.section-eyebrow {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 4px; color: var(--cyan);
+  margin-bottom: 16px; display: block;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: 2px; line-height: 1;
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 16px; color: var(--muted);
+  max-width: 560px; line-height: 1.75;
+  margin-bottom: 56px;
+}
+
+/* ── HOW IT WORKS ── */
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.how-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 32px 28px;
+  position: relative; overflow: hidden;
+  transition: border-color .25s, transform .25s;
+}
+.how-card:hover { border-color: rgba(0,212,255,0.35); transform: translateY(-4px); }
+.how-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--pink)); opacity: 0;
+  transition: opacity .25s;
+}
+.how-card:hover::before { opacity: 1; background: linear-gradient(90deg, var(--cyan), var(--pink)); }
+.how-num {
+  font-family: var(--font-display); font-size: 64px;
+  color: #1a1a30; letter-spacing: 2px;
+  position: absolute; top: 12px; right: 20px;
+  line-height: 1;
+}
+.how-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+.how-title {
+  font-family: var(--font-display); font-size: 22px;
+  letter-spacing: 1px; margin-bottom: 10px;
+  color: var(--text);
+}
+.how-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* ── TIERS ── */
+.tiers-wrap { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.tiers-inner { max-width: 1200px; margin: 0 auto; padding: 100px 40px; }
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; align-items: stretch;
+}
+.tier-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform .25s, border-color .25s;
+}
+.tier-card:hover { transform: translateY(-6px); }
+.tier-card.featured {
+  border-color: var(--cyan);
+  box-shadow: 0 0 60px rgba(0,212,255,0.08);
+}
+.tier-badge {
+  background: var(--pink); color: #fff;
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; padding: 6px 0;
+  text-align: center; font-weight: 700;
+}
+.tier-header { padding: 28px 28px 20px; border-bottom: 1px solid var(--border); }
+.tier-name {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 3px; color: var(--muted);
+  margin-bottom: 8px; display: block;
+}
+.tier-price {
+  font-family: var(--font-display); font-size: 52px;
+  letter-spacing: 2px; line-height: 1;
+  color: var(--gold);
+}
+.tier-price-sub { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.tier-body { padding: 24px 28px; flex: 1; }
+.tier-highlight {
+  background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.15);
+  border-radius: 8px; padding: 12px 14px;
+  margin-bottom: 20px;
+}
+.tier-highlight-val {
+  font-family: var(--font-display); font-size: 24px;
+  color: var(--green); display: block; line-height: 1;
+}
+.tier-highlight-lbl { font-size: 11px; color: var(--muted); margin-top: 2px; display: block; }
+.tier-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.tier-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13.5px; color: var(--muted); line-height: 1.5;
+}
+.tier-features li .ck { color: var(--green); flex-shrink: 0; font-size: 14px; margin-top: 1px; }
+.tier-features li .xk { color: #2a2a4a; flex-shrink: 0; font-size: 14px; margin-top: 1px; }
+.tier-features li.active { color: var(--text); }
+.tier-footer { padding: 0 28px 28px; }
+.tier-btn {
+  width: 100%; padding: 14px;
+  border-radius: 6px; border: none;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 2px; cursor: pointer; font-weight: 700;
+  transition: all .2s; text-decoration: none;
+  display: block; text-align: center;
+}
+.tier-btn-gold { background: var(--pink); color: #fff; }
+.tier-btn-gold:hover { background: #c8003e; }
+.tier-btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.tier-btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+
+/* ── WHY ── */
+.why-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.why-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 28px;
+  display: flex; gap: 18px; align-items: flex-start;
+  transition: border-color .2s;
+}
+.why-card:hover { border-color: rgba(0,212,255,0.3); }
+.why-icon-wrap {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: rgba(0,212,255,0.07); border: 1px solid rgba(0,212,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.why-title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+.why-desc { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+
+/* ── BRANDS ── */
+.brands-wrap {
+  border-top: 1px solid var(--border);
+  padding: 60px 40px;
+  text-align: center;
+}
+.brands-label {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 3px; color: var(--muted);
+  margin-bottom: 32px; display: block;
+}
+.brands-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 48px; flex-wrap: wrap;
+}
+.brand-pill {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 12px 24px;
+  font-family: var(--font-display); font-size: 20px;
+  letter-spacing: 2px; color: var(--muted);
+  transition: all .2s;
+}
+.brand-pill:hover { border-color: var(--cyan); color: var(--cyan); }
+.brand-pill .bi { font-size: 22px; }
+
+/* ── INCOME CALCULATOR ── */
+.calc-wrap {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden;
+}
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.calc-left { padding: 48px; border-right: 1px solid var(--border); }
+.calc-right {
+  padding: 48px;
+  background: rgba(245,200,66,0.03);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.calc-label {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 2px; color: var(--muted);
+  margin-bottom: 8px; display: block;
+}
+.calc-slider-row { margin-bottom: 28px; }
+input[type=range] {
+  width: 100%; appearance: none;
+  height: 4px; border-radius: 2px;
+  background: var(--border); outline: none;
+  cursor: pointer; margin-top: 8px;
+}
+input[type=range]::-webkit-slider-thumb {
+  appearance: none; width: 18px; height: 18px;
+  border-radius: 50%; background: var(--pink); cursor: pointer;
+}
+.calc-val {
+  font-family: var(--font-display); font-size: 28px;
+  color: var(--gold); letter-spacing: 1px;
+}
+.calc-result-label {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; color: var(--muted);
+  margin-bottom: 4px;
+}
+.calc-result-val {
+  font-family: var(--font-display); font-size: 52px;
+  color: var(--green); letter-spacing: 2px;
+  line-height: 1; margin-bottom: 4px;
+}
+.calc-result-sub { font-size: 13px; color: var(--muted); }
+.calc-divider { width: 40px; height: 1px; background: var(--border); margin: 20px 0; }
+
+/* ── SIGN UP FORM ── */
+.signup-wrap {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+.signup-inner {
+  max-width: 800px; margin: 0 auto;
+  padding: 100px 40px; text-align: center;
+}
+.signup-form {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 48px;
+  text-align: left; margin-top: 48px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.form-group label {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; color: var(--muted);
+  text-transform: uppercase;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 6px; padding: 12px 14px;
+  color: var(--text); font-family: var(--font-body);
+  font-size: 14px; outline: none;
+  transition: border-color .2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--gold); }
+.form-group select option { background: var(--card); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-submit {
+  width: 100%; padding: 16px;
+  background: var(--pink); color: #fff;
+  border: none; border-radius: 6px;
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 2px; cursor: pointer; font-weight: 700;
+  margin-top: 8px; transition: all .2s;
+}
+.form-submit:hover { background: #c8003e; }
+.form-note {
+  font-size: 12px; color: var(--muted);
+  text-align: center; margin-top: 16px; line-height: 1.6;
+}
+
+/* ── FAQ ── */
+.faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 760px; }
+.faq-item {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden;
+}
+.faq-q {
+  padding: 20px 24px; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 15px; font-weight: 500;
+  transition: color .2s;
+}
+.faq-q:hover { color: var(--cyan); }
+.faq-arrow { color: var(--pink); font-size: 18px; transition: transform .3s; flex-shrink: 0; }
+.faq-a {
+  padding: 0 24px; max-height: 0;
+  overflow: hidden; transition: max-height .35s ease, padding .3s;
+  font-size: 14px; color: var(--muted); line-height: 1.75;
+}
+.faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
+.faq-item.open .faq-arrow { transform: rotate(45deg); }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-logo { font-family: var(--font-display); font-size: 22px; letter-spacing: 2px; }
+.footer-logo em { color: var(--cyan); font-style: normal; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color .2s; }
+.footer-links a:hover { color: var(--cyan); }
+.footer-copy { font-family: var(--font-mono); font-size: 9px; letter-spacing: 2px; color: #2a2a4a; }
+
+/* Success state */
+.success-msg {
+  display: none; text-align: center; padding: 40px 0;
+}
+.success-msg .big { font-size: 56px; margin-bottom: 16px; display: block; }
+.success-msg h3 { font-family: var(--font-display); font-size: 32px; letter-spacing: 2px; margin-bottom: 10px; color: var(--cyan); }
+.success-msg p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp .7s ease forwards; opacity: 0; }
+.delay-1 { animation-delay: .1s; }
+.delay-2 { animation-delay: .2s; }
+.delay-3 { animation-delay: .3s; }
+.delay-4 { animation-delay: .4s; }
+
+/* Mobile */
+@media(max-width: 768px) {
+  .nav { padding: 0 16px; }
+  .nav-links { display: none; }
+  .section { padding: 60px 16px; }
+  .tiers-inner { padding: 60px 16px; }
+  .tiers-grid { grid-template-columns: 1fr; gap: 16px; }
+  .why-grid { grid-template-columns: 1fr; }
+  .calc-grid { grid-template-columns: 1fr; }
+  .calc-left { border-right: none; border-bottom: 1px solid var(--border); }
+  .form-row { grid-template-columns: 1fr; }
+  .signup-form { padding: 28px 20px; }
+  .hero-stats { flex-direction: column; border-radius: 10px; }
+  .hero-stat { border-right: none; border-bottom: 1px solid var(--border); }
+  .hero-stat:last-child { border-bottom: none; }
+  .footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .how-grid { grid-template-columns: 1fr; }
+  .brands-row { gap: 12px; }
+  .signup-inner { padding: 60px 16px; }
+  .brands-wrap { padding: 40px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">TECHFLIP <em>AGENCY</em></div>
+  <div class="nav-links">
+    <a href="#how">How It Works</a>
+    <a href="#tiers">Pricing</a>
+    <a href="#why">Why Us</a>
+    <a href="#calculator">Calculator</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a href="#signup" class="nav-cta">GET STARTED</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <canvas id="particles" style="position:absolute;inset:0;z-index:1;pointer-events:none;"></canvas>
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-scanlines"></div>
+
+  <div class="hero-eyebrow">TECHFLIP AGENCY · EST. 2024 · MOUNT HOLLY, NJ</div>
+
+  <h1 class="fade-up">
+    OWN YOUR<br>
+    <span class="gold">TECH</span><br>
+    EMPIRE
+  </h1>
+
+  <p class="hero-sub fade-up delay-1">
+    We put <strong>Apple, Samsung & more</strong> in your hands to resell.
+    You collect the profits. We handle inventory, shipping, listings & fulfillment.
+    <strong>No experience needed.</strong>
+  </p>
+
+  <div class="hero-ctas fade-up delay-2">
+    <a href="#tiers" class="btn-gold">VIEW PACKAGES</a>
+    <a href="#how" class="btn-ghost">HOW IT WORKS</a>
+  </div>
+
+  <div class="hero-stats fade-up delay-3">
+    <div class="hero-stat">
+      <span class="hs-val">$150+</span>
+      <span class="hs-lbl">AVG PROFIT / DEVICE</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hs-val">3–7</span>
+      <span class="hs-lbl">DAYS TO SELL</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hs-val">500+</span>
+      <span class="hs-lbl">DEVICES MANAGED</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hs-val">100%</span>
+      <span class="hs-lbl">UNLOCKED DEVICES</span>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<div class="brands-wrap">
+  <span class="brands-label">PREMIUM BRANDS WE WORK WITH</span>
+  <div class="brands-row">
+    <div class="brand-pill"><span class="bi">🍎</span> Apple iPhone</div>
+    <div class="brand-pill"><span class="bi">💻</span> MacBook</div>
+    <div class="brand-pill"><span class="bi">🖥</span> iPad</div>
+    <div class="brand-pill"><span class="bi">📲</span> Samsung Galaxy</div>
+    <div class="brand-pill"><span class="bi">⌚</span> Apple Watch</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <span class="section-eyebrow">THE PROCESS</span>
+  <h2 class="section-title">HOW IT <span style="color:var(--cyan)">WORKS</span></h2>
+  <p class="section-sub">From sign-up to your first profit check — here's exactly what happens when you join TechFlip Agency.</p>
+
+  <div class="how-grid">
+    <div class="how-card">
+      <span class="how-num">01</span>
+      <span class="how-icon">💼</span>
+      <div class="how-title">CHOOSE YOUR TIER</div>
+      <p class="how-desc">Select the package that fits your investment goal — Starter at $15K, Growth at $25K, or Elite at $50K. Each tier includes a custom storefront, CRM, and managed inventory.</p>
+    </div>
+    <div class="how-card">
+      <span class="how-num">02</span>
+      <span class="how-icon">📦</span>
+      <div class="how-title">WE SOURCE INVENTORY</div>
+      <p class="how-desc">We use your investment to acquire certified pre-owned iPhones, MacBooks, iPads, Samsung phones and Apple Watches from verified suppliers at below-market prices.</p>
+    </div>
+    <div class="how-card">
+      <span class="how-num">03</span>
+      <span class="how-icon">🛒</span>
+      <div class="how-title">WE LIST & SELL</div>
+      <p class="how-desc">Every device gets listed on eBay and Facebook Marketplace under your branded storefront. We handle all buyer communication, pricing, and promotions.</p>
+    </div>
+    <div class="how-card">
+      <span class="how-num">04</span>
+      <span class="how-icon">📦</span>
+      <div class="how-title">WE SHIP EVERYTHING</div>
+      <p class="how-desc">You never touch a device. We handle all packing, shipping, and tracking. No warehouse. No logistics headaches. No inventory sitting in your garage.</p>
+    </div>
+    <div class="how-card">
+      <span class="how-num">05</span>
+      <span class="how-icon">📊</span>
+      <div class="how-title">YOU TRACK IT ALL</div>
+      <p class="how-desc">Your custom CRM dashboard shows every sale, every device, and your running profit in real time. Full transparency — you always know where your money is.</p>
+    </div>
+    <div class="how-card">
+      <span class="how-num">06</span>
+      <span class="how-icon">💰</span>
+      <div class="how-title">YOU COLLECT PROFITS</div>
+      <p class="how-desc">Monthly profit distributions sent directly to you. Capital gets reinvested into fresh inventory automatically so your business keeps growing month over month.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<div class="tiers-wrap" id="tiers">
+  <div class="tiers-inner">
+    <span class="section-eyebrow">INVESTMENT PACKAGES</span>
+    <h2 class="section-title">PICK YOUR <span style="color:var(--cyan)">TIER</span></h2>
+    <p class="section-sub">Three levels of investment. One proven system. You choose how big you want to go.</p>
+
+    <div class="tiers-grid">
+
+      <!-- STARTER -->
+      <div class="tier-card">
+        <div class="tier-header">
+          <span class="tier-name">STARTER PACKAGE</span>
+          <div class="tier-price">$15K</div>
+          <div class="tier-price-sub">One-time investment</div>
+        </div>
+        <div class="tier-body">
+          <div class="tier-highlight">
+            <span class="tier-highlight-val">$800–$1,500</span>
+            <span class="tier-highlight-lbl">ESTIMATED MONTHLY RETURN</span>
+          </div>
+          <ul class="tier-features">
+            <li class="active"><span class="ck">✓</span> 10–15 managed devices</li>
+            <li class="active"><span class="ck">✓</span> Custom branded storefront</li>
+            <li class="active"><span class="ck">✓</span> Personal CRM dashboard</li>
+            <li class="active"><span class="ck">✓</span> eBay + Facebook listings</li>
+            <li class="active"><span class="ck">✓</span> We handle all shipping</li>
+            <li class="active"><span class="ck">✓</span> Monthly profit reports</li>
+            <li class="active"><span class="ck">✓</span> IMEI verification on all devices</li>
+            <li><span class="xk">✗</span> Priority inventory access</li>
+            <li><span class="xk">✗</span> OfferUp listings</li>
+            <li><span class="xk">✗</span> Dedicated account manager</li>
+          </ul>
+        </div>
+        <div class="tier-footer">
+          <a href="#signup" class="tier-btn tier-btn-outline">GET STARTED →</a>
+        </div>
+      </div>
+
+      <!-- GROWTH -->
+      <div class="tier-card featured">
+        <div class="tier-badge">MOST POPULAR</div>
+        <div class="tier-header">
+          <span class="tier-name">GROWTH PACKAGE</span>
+          <div class="tier-price">$25K</div>
+          <div class="tier-price-sub">One-time investment</div>
+        </div>
+        <div class="tier-body">
+          <div class="tier-highlight">
+            <span class="tier-highlight-val">$1,500–$2,800</span>
+            <span class="tier-highlight-lbl">ESTIMATED MONTHLY RETURN</span>
+          </div>
+          <ul class="tier-features">
+            <li class="active"><span class="ck">✓</span> 20–30 managed devices</li>
+            <li class="active"><span class="ck">✓</span> Custom branded storefront</li>
+            <li class="active"><span class="ck">✓</span> Personal CRM dashboard</li>
+            <li class="active"><span class="ck">✓</span> eBay + Facebook + OfferUp</li>
+            <li class="active"><span class="ck">✓</span> We handle all shipping</li>
+            <li class="active"><span class="ck">✓</span> Weekly profit reports</li>
+            <li class="active"><span class="ck">✓</span> IMEI verification on all devices</li>
+            <li class="active"><span class="ck">✓</span> Priority inventory access</li>
+            <li class="active"><span class="ck">✓</span> Dedicated account manager</li>
+            <li><span class="xk">✗</span> White-label branding</li>
+          </ul>
+        </div>
+        <div class="tier-footer">
+          <a href="#signup" class="tier-btn tier-btn-gold">GET STARTED →</a>
+        </div>
+      </div>
+
+      <!-- ELITE -->
+      <div class="tier-card">
+        <div class="tier-header">
+          <span class="tier-name">ELITE PACKAGE</span>
+          <div class="tier-price">$50K</div>
+          <div class="tier-price-sub">One-time investment</div>
+        </div>
+        <div class="tier-body">
+          <div class="tier-highlight">
+            <span class="tier-highlight-val">$3,500–$6,000+</span>
+            <span class="tier-highlight-lbl">ESTIMATED MONTHLY RETURN</span>
+          </div>
+          <ul class="tier-features">
+            <li class="active"><span class="ck">✓</span> 50+ managed devices</li>
+            <li class="active"><span class="ck">✓</span> Full white-label branding</li>
+            <li class="active"><span class="ck">✓</span> Advanced CRM + analytics</li>
+            <li class="active"><span class="ck">✓</span> eBay + Facebook + OfferUp + more</li>
+            <li class="active"><span class="ck">✓</span> We handle all shipping</li>
+            <li class="active"><span class="ck">✓</span> Real-time profit dashboard</li>
+            <li class="active"><span class="ck">✓</span> IMEI verification on all devices</li>
+            <li class="active"><span class="ck">✓</span> First access to bulk lot deals</li>
+            <li class="active"><span class="ck">✓</span> Dedicated account manager</li>
+            <li class="active"><span class="ck">✓</span> Promoted listing ads included</li>
+          </ul>
+        </div>
+        <div class="tier-footer">
+          <a href="#signup" class="tier-btn tier-btn-outline">GET STARTED →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<section class="section" id="why">
+  <span class="section-eyebrow">WHY TECHFLIP AGENCY</span>
+  <h2 class="section-title">THE <span style="color:var(--cyan)">ADVANTAGE</span></h2>
+  <p class="section-sub">We've built the operation so you don't have to. Here's what separates us from everything else out there.</p>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon-wrap">📱</div>
+      <div>
+        <div class="why-title">Premium Brand Power</div>
+        <p class="why-desc">Apple and Samsung are the most recognized consumer electronics brands on earth. Pre-owned demand is at an all-time high and growing every year as upgrade cycles slow down.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-wrap">🔄</div>
+      <div>
+        <div class="why-title">Fast Capital Recycling</div>
+        <p class="why-desc">Devices sell in 3–7 days on average. Your capital doesn't sit idle — it flips multiple times per month, compounding your returns continuously throughout the year.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-wrap">🛡️</div>
+      <div>
+        <div class="why-title">Zero Inventory Risk</div>
+        <p class="why-desc">You never hold stock. We store, manage, and ship everything from our facility. Your only job is to check your dashboard and collect your monthly profit distributions.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-wrap">📊</div>
+      <div>
+        <div class="why-title">Full Transparency</div>
+        <p class="why-desc">Your custom CRM tracks every device, every sale, and every dollar in real time. We send detailed reports so you always know exactly what your money is doing.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-wrap">💹</div>
+      <div>
+        <div class="why-title">Recession-Proof Market</div>
+        <p class="why-desc">Pre-owned device demand actually increases during economic downturns as consumers trade down from new. Our market grows when times get tough — built-in protection.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon-wrap">🤝</div>
+      <div>
+        <div class="why-title">Done-For-You Operation</div>
+        <p class="why-desc">Sourcing, IMEI verification, listing, pricing, buyer communication, packing, shipping — all handled by us. You contribute capital and collect profits. That's the whole deal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCOME CALCULATOR -->
+<section class="section" id="calculator" style="padding-top:0;">
+  <span class="section-eyebrow">INCOME ESTIMATOR</span>
+  <h2 class="section-title" style="margin-bottom:8px;">CALCULATE YOUR <span style="color:var(--cyan)">RETURNS</span></h2>
+  <p class="section-sub">Drag the sliders to estimate your monthly income based on your tier and device mix.</p>
+
+  <div class="calc-wrap">
+    <div class="calc-grid">
+      <div class="calc-left">
+        <div class="calc-slider-row">
+          <span class="calc-label">NUMBER OF DEVICES</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <input type="range" id="calc-devices" min="10" max="60" value="20" step="1" oninput="updateCalc()">
+            <span class="calc-val" id="calc-devices-val" style="margin-left:16px;min-width:40px;">20</span>
+          </div>
+        </div>
+        <div class="calc-slider-row">
+          <span class="calc-label">AVG PROFIT PER DEVICE ($)</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <input type="range" id="calc-profit" min="80" max="250" value="150" step="10" oninput="updateCalc()">
+            <span class="calc-val" id="calc-profit-val" style="margin-left:16px;min-width:55px;">$150</span>
+          </div>
+        </div>
+        <div class="calc-slider-row">
+          <span class="calc-label">AVG SELL TIME (DAYS)</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <input type="range" id="calc-days" min="3" max="14" value="5" step="1" oninput="updateCalc()">
+            <span class="calc-val" id="calc-days-val" style="margin-left:16px;min-width:40px;">5</span>
+          </div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-top:8px;font-size:13px;color:var(--muted);line-height:1.6;">
+          💡 Pro tip: iPhones 15 Pro and 16 Pro models consistently return $180–$220 profit each and sell in under 5 days on average.
+        </div>
+      </div>
+      <div class="calc-right">
+        <div>
+          <div class="calc-result-label">ESTIMATED MONTHLY PROFIT</div>
+          <div class="calc-result-val" id="calc-monthly">$3,000</div>
+          <div class="calc-result-sub">based on your inputs</div>
+        </div>
+        <div class="calc-divider"></div>
+        <div>
+          <div class="calc-result-label">ESTIMATED ANNUAL PROFIT</div>
+          <div style="font-family:var(--font-display);font-size:36px;color:var(--cyan);letter-spacing:2px;line-height:1;" id="calc-annual">$36,000</div>
+          <div class="calc-result-sub">compounding monthly</div>
+        </div>
+        <div class="calc-divider"></div>
+        <div>
+          <div class="calc-result-label">SUGGESTED TIER</div>
+          <div style="font-family:var(--font-display);font-size:28px;color:var(--text);letter-spacing:2px;" id="calc-tier">GROWTH — $25K</div>
+        </div>
+        <a href="#signup" style="margin-top:24px;display:block;text-align:center;padding:13px;background:var(--pink);color:#fff;border-radius:4px;font-family:var(--font-mono);font-size:12px;letter-spacing:2px;font-weight:700;text-decoration:none;transition:all .2s;">GET THIS PACKAGE →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" style="padding-top:0;">
+  <span class="section-eyebrow">COMMON QUESTIONS</span>
+  <h2 class="section-title" style="margin-bottom:40px;">FAQ</h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Do I need any experience in reselling or tech? <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">Zero experience needed. We handle all the technical work — sourcing, testing, listing, shipping. You just invest and track your returns through your dashboard. We built this so anyone can participate in the pre-owned tech market.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        How do I know my money is being used properly? <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">Every client gets a custom CRM dashboard with real-time visibility into their inventory, active listings, and sales. You can log in any time and see exactly which devices are listed, which have sold, and what profit was generated. A formal partnership agreement is signed before any funds are transferred.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        When do I start seeing returns? <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">After your investment is received and the partnership agreement is signed, we source and list your first batch of devices within 7–10 business days. Most clients see their first sales within the first 2 weeks. Monthly profit distributions begin at the end of your first full month.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What happens if a device doesn't sell? <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">Pre-owned Apple and Samsung devices have extremely high demand — our average sell time is 3–7 days. In the rare case a device takes longer, we adjust pricing strategically to move it. Your capital is always actively working.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Can I upgrade my tier later? <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">Absolutely. Many clients start at the Starter tier and reinvest their profits to move up to Growth or Elite. We make it easy to scale — just let your account manager know and we'll adjust your inventory allocation accordingly.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Are the devices verified and legitimate? <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">Every single device goes through IMEI verification, blacklist checking, and full functionality testing before it's listed. We only sell unlocked, clean devices — no blacklisted, carrier-locked, or iCloud-locked devices ever make it into your inventory.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What is the projected return on my investment? <span class="faq-arrow">+</span>
+      </div>
+      <div class="faq-a">Returns vary based on tier and market conditions, but our clients typically see 20–30% monthly ROI on their managed inventory. Starter clients average $800–$1,500/month. Growth clients average $1,500–$2,800/month. Elite clients average $3,500–$6,000+/month.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGN UP -->
+<div class="signup-wrap" id="signup">
+  <div class="signup-inner">
+    <span class="section-eyebrow" style="display:block;text-align:center;">READY TO START</span>
+    <h2 class="section-title" style="text-align:center;">JOIN <span style="color:var(--cyan)">TECHFLIP AGENCY</span></h2>
+    <p class="section-sub" style="margin:0 auto 0;text-align:center;">Fill out the form below and we'll reach out within 24 hours to walk you through next steps and answer any questions.</p>
+
+    <div class="signup-form">
+      <div id="signup-form-content">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name *</label>
+            <input type="text" id="sf-fname" placeholder="John">
+          </div>
+          <div class="form-group">
+            <label>Last Name *</label>
+            <input type="text" id="sf-lname" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" id="sf-email" placeholder="john@email.com">
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="sf-phone" placeholder="(555) 000-0000">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>City / State</label>
+            <input type="text" id="sf-location" placeholder="Mount Holly, NJ">
+          </div>
+          <div class="form-group">
+            <label>Investment Tier *</label>
+            <select id="sf-tier">
+              <option value="">— Select a Package —</option>
+              <option value="Starter — $15,000">Starter — $15,000</option>
+              <option value="Growth — $25,000">Growth — $25,000 (Most Popular)</option>
+              <option value="Elite — $50,000">Elite — $50,000</option>
+              <option value="Not sure yet">Not sure yet — want to learn more</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>How did you hear about us?</label>
+          <select id="sf-source">
+            <option value="">— Select —</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Referral">Referral from a friend</option>
+            <option value="Google">Google Search</option>
+            <option value="TechFlip website">TechFlip website</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Questions or Comments (optional)</label>
+          <textarea id="sf-notes" placeholder="Tell us a bit about your goals or any questions you have..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitSignup()">SUBMIT MY APPLICATION →</button>
+        <p class="form-note">By submitting you agree to be contacted by TechFlip Agency. No funds are collected through this form. A formal agreement is signed before any investment is made.</p>
+      </div>
+
+      <div class="success-msg" id="signup-success">
+        <span class="big">🎉</span>
+        <h3>APPLICATION RECEIVED!</h3>
+        <p>We'll review your information and reach out within 24 hours to discuss next steps. Check your email for a confirmation message from us.<br><br>Welcome to the TechFlip Agency family!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">TECHFLIP <em>AGENCY</em></div>
+  <div class="footer-links">
+    <a href="#how">How It Works</a>
+    <a href="#tiers">Packages</a>
+    <a href="#why">Why Us</a>
+    <a href="#faq">FAQ</a>
+    <a href="#signup">Join Now</a>
+  </div>
+  <div class="footer-copy">© 2026 TECHFLIP AGENCY · MOUNT HOLLY, NJ</div>
+</footer>
+
+<script>
+// ── CALCULATOR ──
+function updateCalc() {
+  const devices = parseInt(document.getElementById('calc-devices').value);
+  const profit  = parseInt(document.getElementById('calc-profit').value);
+  const days    = parseInt(document.getElementById('calc-days').value);
+
+  document.getElementById('calc-devices-val').textContent = devices;
+  document.getElementById('calc-profit-val').textContent  = '$' + profit;
+  document.getElementById('calc-days-val').textContent    = days;
+
+  const turnsPerMonth = Math.floor(30 / days);
+  const monthly = devices * profit * Math.min(turnsPerMonth, 1);
+  const annual  = monthly * 12;
+
+  document.getElementById('calc-monthly').textContent = '$' + monthly.toLocaleString();
+  document.getElementById('calc-annual').textContent  = '$' + annual.toLocaleString();
+
+  let tier = 'STARTER — $15K';
+  if (devices > 30) tier = 'ELITE — $50K';
+  else if (devices > 15) tier = 'GROWTH — $25K';
+  document.getElementById('calc-tier').textContent = tier;
+}
+updateCalc();
+
+// ── FAQ ──
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ── SIGNUP FORM ──
+function submitSignup() {
+  const fname = document.getElementById('sf-fname').value.trim();
+  const lname = document.getElementById('sf-lname').value.trim();
+  const email = document.getElementById('sf-email').value.trim();
+  const phone = document.getElementById('sf-phone').value.trim();
+  const tier  = document.getElementById('sf-tier').value;
+
+  if (!fname) { alert('Please enter your first name.'); return; }
+  if (!lname) { alert('Please enter your last name.'); return; }
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+  if (!phone) { alert('Please enter your phone number.'); return; }
+  if (!tier)  { alert('Please select an investment tier.'); return; }
+
+  // Save to localStorage as backup
+  const lead = {
+    id: Date.now().toString(),
+    name: fname + ' ' + lname,
+    email, phone,
+    location: document.getElementById('sf-location').value.trim(),
+    tier,
+    source: document.getElementById('sf-source').value,
+    notes: document.getElementById('sf-notes').value.trim(),
+    submittedAt: new Date().toLocaleString()
+  };
+
+  const leads = JSON.parse(localStorage.getItem('agency_leads') || '[]');
+  leads.push(lead);
+  localStorage.setItem('agency_leads', JSON.stringify(leads));
+
+  // Show success
+  document.getElementById('signup-form-content').style.display = 'none';
+  document.getElementById('signup-success').style.display = 'block';
+
+  // Scroll to success message
+  document.getElementById('signup-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ── SMOOTH SCROLL FOR NAV ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// ── PARTICLE ANIMATION ──
+(function() {
+  const canvas = document.getElementById('particles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function Particle() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.r = Math.random() * 1.5 + 0.5;
+    this.color = Math.random() > 0.5 ? 'rgba(0,212,255,' : 'rgba(249,0,77,';
+    this.opacity = Math.random() * 0.5 + 0.1;
+  }
+
+  Particle.prototype.update = function() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.x < 0 || this.x > W) this.vx *= -1;
+    if (this.y < 0 || this.y > H) this.vy *= -1;
+  };
+
+  function init() {
+    resize();
+    particles = [];
+    const count = Math.floor((W * H) / 12000);
+    for (let i = 0; i < count; i++) particles.push(new Particle());
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      p.update();
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + p.opacity + ')';
+      ctx.fill();
+    });
+
+    // Draw connecting lines
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = 'rgba(0,212,255,' + (0.08 * (1 - dist/120)) + ')';
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', init);
+  init();
+  draw();
+})();
+
+// ── NAV ACTIVE STATE ──
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav');
+  nav.style.borderBottomColor = window.scrollY > 50 ? 'rgba(0,212,255,0.12)' : 'var(--border)';
+});
+</script>
+</body>
+</html>
